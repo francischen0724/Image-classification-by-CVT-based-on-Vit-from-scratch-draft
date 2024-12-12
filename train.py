@@ -21,7 +21,7 @@ config = {
     "qkv_bias": True,
     "use_faster_attention": True,
 }
-# These are not hard constraints, but are used to prevent misconfigurations
+# To prevent misconfigurations
 assert config["hidden_size"] % config["num_attention_heads"] == 0
 assert config['intermediate_size'] == 4 * config['hidden_size']
 assert config['image_size'] % config['patch_size'] == 0
@@ -43,9 +43,9 @@ class Trainer:
         """
         Train the model for the specified number of epochs.
         """
-        # Keep track of the losses and accuracies
+        # losses and accuracies
         train_losses, test_losses, accuracies = [], [], []
-        # Train the model
+        # Train
         for i in range(epochs):
             train_loss = self.train_epoch(trainloader)
             accuracy, test_loss = self.evaluate(testloader)
@@ -56,7 +56,7 @@ class Trainer:
             if save_model_every_n_epochs > 0 and (i+1) % save_model_every_n_epochs == 0 and i+1 != epochs:
                 print('\tSave checkpoint at epoch', i+1)
                 save_checkpoint(self.exp_name, self.model, i+1)
-        # Save the experiment
+        # Save
         save_experiment(self.exp_name, config, self.model, train_losses, test_losses, accuracies)
 
     def train_epoch(self, trainloader):
@@ -124,14 +124,17 @@ def parse_args():
 
 def main():
     args = parse_args()
-    # Training parameters
+    
+    # Parameters
     batch_size = args.batch_size
     epochs = args.epochs
     lr = args.lr
     device = args.device
     save_model_every_n_epochs = args.save_model_every
-    # Load the CIFAR10 dataset
+    
+    # Load the CIFAR10 / CIFAR100 dataset
     trainloader, testloader, _ = prepare_data(batch_size=batch_size)
+    
     # Create the model, optimizer, loss function and trainer
     model = ViTForClassfication(config)
     optimizer = optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-2)
