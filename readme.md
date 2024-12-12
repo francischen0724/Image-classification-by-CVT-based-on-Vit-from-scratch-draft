@@ -1,6 +1,6 @@
-# Vision Transformer from Scratch [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/10AYlqsACfMiuMiMSVQjcW8NnkGiJrHLh?usp=sharing)
+# Image Classification by CVT based on Vit from scratch
 
-This is a simplified PyTorch implementation of the paper [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929). The goal of this project is to provide a simple and easy-to-understand implementation. The code is not optimized for speed and is not intended to be used for production.
+This is a simplified PyTorch implementation of the CVT based on Vit aimed for simple image classification tasks. Reference to the paper [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) and [Escaping the Big Data Paradigm with Compact Transformers][https://arxiv.org/abs/2104.05704v4]. The goal of this project is to implement a simple and easy-to-understand CVT model to deal with image classification tasks ALL FROM SCRATCH. And compare the performance between CVT(with sequence pooling) and Vit(with CLS token). We also add a faster compute method of Multiplehead Attention, which is also compared to the traditional one in our project.
 
 Check out [this post](https://medium.com/towards-data-science/implementing-vision-transformer-vit-from-scratch-3e192c6155f0) for step-by-step guide on implementing ViT in detail.
 
