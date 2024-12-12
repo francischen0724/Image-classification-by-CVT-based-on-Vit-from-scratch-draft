@@ -43,7 +43,8 @@ class Embeddings(nn.Module):
     """
     Combine the patch embeddings with the class token and position embeddings.
     """
-        
+    # Unravel the annotation # for original Vit model
+    
     # def __init__(self, config):
     #     super().__init__()
     #     self.config = config
@@ -376,7 +377,7 @@ class ViTForClassfication(nn.Module):
                 std=self.config["initializer_range"],
             ).to(module.position_embeddings.dtype)
 
-            # No CLS anymore
+            # If use the original Vit, unravel the annotation #
             # module.cls_token.data = nn.init.trunc_normal_(
             #     module.cls_token.data.to(torch.float32),
             #     mean=0.0,
